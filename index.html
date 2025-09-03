@@ -2,30 +2,85 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sample</title>
+  <title>Preorder Form</title>
 </head>
 <body>
-  <h2>Login</h2>
-  <form id="loginForm">
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username" required><br><br>
+  <h2>Product Preorder Form</h2>
+  <form id="preorderForm">
+    <label for="name">Full Name:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
 
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" required><br><br>
+    <label for="email">Email Address:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
 
-    <input type="submit" value="Login">
+    <label for="product">Select Product:</label><br>
+    <select id="product" name="product" required>
+      <option value="">-- Choose a product --</option>
+      <option value="Widget A">Widget A</option>
+      <option value="Widget B">Widget B</option>
+      <option value="Widget C">Widget C</option>
+    </select><br><br>
+
+    <label for="quantity">Quantity:</label><br>
+    <input type="number" id="quantity" name="quantity" min="1" value="1" required><br><br>
+
+    <label for="notes">Special Instructions:</label><br>
+    <textarea id="notes" name="notes" rows="4" cols="40"></textarea><br><br>
+
+    <input type="submit" value="Preorder Now">
   </form>
 
-  <h3>Output:</h3>
-  <div id="output"></div>
+  <h3 id="letterHeading" style="display:none;">Preorder Letter:</h3>
+  <div id="output" style="display:none; white-space: pre-line; border: 1px solid #ccc; padding: 20px; margin-top: 20px; line-height: 1.6; font-family: Georgia, serif;"></div>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
+    document.getElementById("preorderForm").addEventListener("submit", function(event) {
       event.preventDefault(); // stop real submission
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
-      // For security, we do NOT display the password!
-      document.getElementById("output").innerText = "Username: " + username + " PW " + password;
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const product = document.getElementById("product").value;
+      const quantity = document.getElementById("quantity").value;
+      const notes = document.getElementById("notes").value;
+
+      const letter = 
+`Dear ${name},
+
+Thank you for placing your preorder for the ${product}. We are honored to have earned your trust and commitment, and we are pleased to confirm your order for ${quantity} unit(s). Your preorder details have been securely recorded, and a copy of this confirmation has also been sent to your email address at ${email}. Special notes or instructions provided were: ${notes || "None"}.
+
+This message is not just a receipt, but a full confirmation that you are now part of something meaningful. We believe that a preorder is more than simply reserving a product. It represents a relationship between us and you, the early supporter, and it marks the beginning of a shared journey. The ${product} was not created overnight; it is the result of years of effort, countless prototypes, many discussions, and thousands of hours of testing and refinement. By joining at this stage, you are affirming that innovation matters, that progress matters, and that products should serve a greater purpose than simply existing on a shelf.
+
+We would like to share with you the philosophy that guided the creation of the ${product}. From the beginning, our team set out to build something that was not only functional, but also deeply inspiring. We asked ourselves what it means for a product to truly add value to the lives of its users. We explored ideas about durability, aesthetics, efficiency, and sustainability. Each of these pillars informed the decisions we made along the way. The materials were chosen for strength and resilience, the design for comfort and practicality, and the production process for responsibility and respect toward the environment. The ${product} is not just a tool; it is a reflection of our commitment to better living.
+
+Behind the scenes, the development of the ${product} has been a story of dedication. Our engineers began with simple sketches and digital models, iterating over and over until we found a design that felt intuitive and natural. Our research team studied the needs of real people, collecting feedback, testing ideas in the field, and ensuring that the final product would solve real problems rather than imagined ones. Our craftspeople took prototypes through rigorous stress tests, experimenting with finishes, textures, and components, ensuring that every part served a purpose. Nothing about this process was rushed; every choice was deliberate. The ${product} that will soon be delivered to you is the result of collaboration between dreamers and doers, between creative thinkers and technical experts, all united by one goal: to deliver excellence.
+
+Your preorder is significant because it ensures you are at the front of the line. Many of our past launches have sold out within days, and by acting early, you have secured your place among the very first people who will own the ${product}. As production moves forward, we will be keeping you updated with regular communications. At ${email}, you will receive newsletters that include progress reports, glimpses behind the curtain of our production line, and special insights into how your product is being prepared. These updates are exclusive to preorder customers and will not be shared publicly until later. In this way, you become part of an inner circle, receiving news and opportunities before the general public.
+
+We also want to reassure you of the reliability of this process. Every preorder is carefully logged and monitored. Your payment and reservation are protected, and our customer support team is always available to assist you. If you need to update your quantity, change your delivery address, or adjust any special instructions, simply reach out and we will make it right. Transparency and accountability are at the heart of our values, and your peace of mind is as important to us as the quality of the ${product} itself.
+
+It is worth reflecting on what makes this preorder special. Unlike a typical purchase, where a product is simply bought and delivered, a preorder is about anticipation. It is about joining a movement early and being part of the first wave of owners. There is something deeply satisfying about knowing you have secured your order before the broader market rushes in. When your ${product} arrives, you will know that you were not only a customer, but a pioneer. You believed in the vision before others did, and you will be rewarded with early access, insider updates, and the pride of being ahead of the curve.
+
+We encourage you to imagine the day your order arrives. The packaging has been carefully designed to heighten the experience, with attention to every detail. From the moment you open the box, you will sense that you are holding something created with purpose. As you begin to use the ${product}, you will notice the thought that went into every curve, every button, every function. Nothing is accidental; everything is there to make your life simpler, more enjoyable, and more meaningful. Over time, the ${product} will become an integral part of your daily routine, something you rely on and something that elevates your expectations of what a product should be.
+
+Preordering also connects you to a larger community. Thousands of individuals around the world are joining this same journey, united by curiosity and excitement. Soon, you will find yourself part of conversations where early adopters share stories, tips, and experiences. These communities often become the birthplace of innovation themselves, as customers inspire one another with creative uses and new ideas. By reserving your ${product}, you are not only receiving a product, but also an invitation to join this dynamic, global network of forward-thinkers.
+
+We would like to highlight our ongoing commitment to sustainability. The ${product} has been developed with responsible sourcing and eco-conscious manufacturing in mind. From packaging materials that are recyclable to energy-efficient production processes, we believe that progress should not come at the expense of the environment. Your preorder supports this vision. Together, we are proving that it is possible to create groundbreaking products while still caring for the world we share.
+
+As we look ahead, our promise to you is simple: we will deliver a product that exceeds expectations. Should anything change in terms of delivery timelines, you will be the first to know. Our communications will always be honest, clear, and timely. We want this preorder journey to feel as rewarding as the moment you finally receive your order.
+
+${name}, your decision to preorder the ${product} is more than a transaction. It is a statement of trust, belief, and support. You have placed your confidence in us, and we intend to honor that by delivering not just a product, but an experience worth remembering. We cannot thank you enough for being part of this moment. Your preorder makes a difference, not only to us as creators but also to the broader community of people who will be inspired by your early adoption.
+
+Please keep an eye on your inbox for further updates. Until then, know that we are working diligently to bring your ${product} to life and into your hands as quickly and carefully as possible. We are thrilled to have you with us on this journey, and we cannot wait for the day when we announce that your preorder is on its way to your doorstep.
+
+With sincere appreciation and commitment,  
+The Preorder Team`;
+
+      // Set the text
+    document.getElementById("output").innerText = letter;
+
+    // Show the letter section
+    document.getElementById("letterHeading").style.display = "block";
+    document.getElementById("output").style.display = "block";
     });
   </script>
 </body>
