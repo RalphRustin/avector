@@ -13,12 +13,18 @@
     <label for="email">Email Address:</label><br>
     <input type="email" id="email" name="email" required><br><br>
 
+     <label for="phone">Phone Number:</label><br>
+    <input type="tel" id="phone" name="phone" required><br><br>
+
+    <label for="address">Shipping Address:</label><br>
+   <input type="text" id="address" name="address" required></textarea><br><br>
+
     <label for="product">Select Product:</label><br>
     <select id="product" name="product" required>
       <option value="">-- Choose a product --</option>
-      <option value="Widget A">Widget A</option>
-      <option value="Widget B">Widget B</option>
-      <option value="Widget C">Widget C</option>
+      <option value="Product A">Product A</option>
+      <option value="Product B">Product B</option>
+      <option value="Product C">Product C</option>
     </select><br><br>
 
     <label for="quantity">Quantity:</label><br>
@@ -39,6 +45,8 @@
 
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const address = document.getElementById("address").value;
       const product = document.getElementById("product").value;
       const quantity = document.getElementById("quantity").value;
       const notes = document.getElementById("notes").value;
@@ -73,7 +81,10 @@ ${name}, your decision to preorder the ${product} is more than a transaction. It
 Please keep an eye on your inbox for further updates. Until then, know that we are working diligently to bring your ${product} to life and into your hands as quickly and carefully as possible. We are thrilled to have you with us on this journey, and we cannot wait for the day when we announce that your preorder is on its way to your doorstep.
 
 With sincere appreciation and commitment,  
-The Preorder Team`;
+The Preorder Team.
+
+Registered Address: ${address}
+Your Contact Phone: ${phone}`;
 
       // Set the text
     document.getElementById("output").innerText = letter;
